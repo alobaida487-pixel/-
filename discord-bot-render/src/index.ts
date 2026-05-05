@@ -8,6 +8,7 @@ import {
   GuildMember,
   VoiceChannel,
   ChannelType,
+  ActivityType,
 } from "discord.js";
 import {
   joinVoiceChannel,
@@ -44,6 +45,17 @@ const commands = [
 
 client.once("ready", async (c) => {
   console.log(`✅ البوت شغال: ${c.user.tag}`);
+
+  c.user.setPresence({
+    activities: [
+      {
+        name: "respect town",
+        type: ActivityType.Streaming,
+        url: "https://www.twitch.tv/respecttown",
+      },
+    ],
+    status: "online",
+  });
 
   const rest = new REST({ version: "10" }).setToken(token!);
   try {
